@@ -1,13 +1,6 @@
-//coordinates som ska användas, och hur inzoomat på de koordinaterna det ska vara
 let geojsonLayer;
 const map = L.map('map').setView([59.33, 18.07], 10);
-//map.getPane('polygons');
-//map.getPane('hospitals');
 
-//map.getPane('polygons').style.zIndex = 400;
-//map.getPane('hospitals').style.zIndex = 650;
-
-// vart den hämtas ifrån, hur mycket det max kan zoomas till och credits
 L.tileLayer(
   'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
   {
@@ -38,8 +31,7 @@ function getColor(zone){
         default:
             return "#999999";
     }
-}
-//För att göra highlighten runt squares lite tjockare byt weight, 
+} 
 function highlightFeature(e){
 
     const layer = e.target;
@@ -53,20 +45,6 @@ function highlightFeature(e){
     info.update(layer.feature.properties);
 
 }
-
-//Förra versionen
-//function highlightFeature(e){
-
-    //e.target.setStyle({
-
-        //weight: 2,
-        //color: "#000",
-        //fillOpacity: 1
-
-    //});
-
-//}
-
 
 function resetHighlight(e){
 
@@ -126,15 +104,13 @@ function updateZoneFilter(){
     })
 }
 
-// hämta datan från filen etc
-fetch('Data/ExportPoly2.geojson')
+fetch('ExportPoly2.geojson')
   .then(response => response.json())
   .then(data => {
     allData = data;
 
 
     geojsonLayer = L.geoJSON(data,{
-        //pane: 'polygons',
 
     style: function(feature){
 
@@ -207,7 +183,7 @@ legend.addTo(map);
 
 
 const hospitalIcon = L.icon({
-    iconUrl: 'Images/HosIcon.png',
+    iconUrl: 'HosIcon.png',
     iconSize: [32,32],
     iconAnchor: [16,32],
     popupAnchor: [0,-32]
@@ -215,11 +191,10 @@ const hospitalIcon = L.icon({
 
 let hospitalLayer;
 
-fetch('Data/AkutSjukhus.geojson')
+fetch('AkutSjukhus.geojson')
 .then(response => response.json())
 .then(data => {
     hospitalLayer = L.geoJSON(data, {
-        //pane: 'hospitals',
         pointToLayer: function(feature, latlng) {
             return L.marker(latlng, {
                 icon: hospitalIcon
