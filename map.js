@@ -89,7 +89,7 @@ let allData;
 
 function updateZoneFilter(){
     const selectedZone =
-    document.getElementById("zoneFilter").value;
+    document.getElementById("ZoneFilter").value;
     geojsonLayer.clearLayers();
     geojsonLayer.addData({
         type: "FeatureCollection",
