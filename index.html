@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Accessability to Emergency Hospitals</title>
+
+        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+
+
+        <link rel ="stylesheet"
+        href="css/style.css">
+    </head>
+    <body>
+    
+    
+        <div id="header"> 
+          <h1>Map of Emergency Hospital Accessability</h1>  
+        </div>
+      
+        <div id = "controls">
+            <select id = "ZoneFilter">
+                <option value="all"> All zones</option>
+                <option value="0-10 min"> 0-10 min</option>
+                <option value="10-15 min"> 10-15 min</option>
+                <option value="15-20 min"> 15-20min</option>
+                <option value="20-30 min"> 20-30 min</option>
+                <option value=">30 min"> >30 min</option>
+            </select>
+        </div>
+
+        <div id="map"> </div>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>    
+        <script src="JS/map.js"></script>
+    </body>
+</html>
